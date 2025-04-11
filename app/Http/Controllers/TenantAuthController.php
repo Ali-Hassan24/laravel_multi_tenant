@@ -12,15 +12,15 @@ class TenantAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('Tenants.auth.login');
+        return view('Tenants.auth.login'); // make sure this exists
     }
 
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+//        dd($credentials);
         if (Auth::guard('tenant')->attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect()->intended('/'); // or wherever
         }
 
         return back()->withErrors([
@@ -31,7 +31,6 @@ class TenantAuthController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('tenant')->logout();
-        return redirect('/tenant/login');
+        return redirect('/login');
     }
 }
-

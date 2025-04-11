@@ -37,4 +37,6 @@ Route::middleware([InitializeTenancyByDomain::class, PreventAccessFromCentralDom
     // Customer routes
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('tenant.customers.create');
     Route::post('/customers', [CustomerController::class, 'store'])->name('tenant.customers.store');
+    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('tenant.customers.destroy');
+
 });

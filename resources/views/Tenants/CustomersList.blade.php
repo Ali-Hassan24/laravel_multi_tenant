@@ -33,6 +33,13 @@
                 {{ session('success') }}
             </div>
         @endif
+
+        @if(session('delete'))
+            <div class="bg-red-100 text-red-700 p-3 rounded mb-4 w-1/2 mx-auto mt-4">
+                {{ session('delete') }}
+            </div>
+        @endif
+
         {{-- Customer Table --}}
         <div class="bg-white rounded-lg shadow p-5">
             <div class="flex justify-between items-center mb-4">
@@ -58,7 +65,7 @@
                             <td class="px-6 py-4">
                                 <a href="" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 |
-                                <form action="" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-block">
+                                <form action="{{ route('tenant.customers.destroy', $customer->id) }}" method="POST" onsubmit="return confirm('Are you sure?')" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-800 ml-2">Delete</button>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\InfluxController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TenantController;
@@ -30,5 +31,9 @@ Route::get('/test-db', function() {
         return "Error connecting to database: " . $e->getMessage();
     }
 });
+
+//influxdb route
+Route::get('/influx-data', [InfluxController::class, 'show']);
+
 
 require __DIR__.'/auth.php';

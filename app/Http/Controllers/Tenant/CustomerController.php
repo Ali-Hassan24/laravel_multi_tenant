@@ -39,4 +39,12 @@ class CustomerController extends Controller
 
         return redirect()->route('tenant.home')->with('success', 'Customer created successfully!');
     }
+
+//    delete function
+
+    public function destroy($id){
+        $customers = Customer::findOrFail($id);
+        $customers->delete();
+        return redirect()->route('tenant.home')->with('delete', 'Customer deleted successfully!');
+    }
 }

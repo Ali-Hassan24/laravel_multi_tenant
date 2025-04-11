@@ -9,6 +9,11 @@
 <div class="bg-white p-10 rounded-lg shadow-md w-full max-w-md text-center">
     <h1 class="text-3xl font-bold text-blue-600 mb-4">Tenant Login</h1>
 
+    @if($errors && $errors->any())
+        <div class="bg-red-100 text-red-700 border border-red-400 rounded p-4 mb-4">
+            Please fix the errors below.
+        </div>
+    @endif
     <form method="POST" action="{{ route('tenant.login') }}">
         @csrf
         <div class="space-y-4">
